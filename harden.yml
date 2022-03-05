@@ -1,0 +1,13 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  become: true
+  tasks:
+    - name: include the hardening role
+      include_role:
+        name: konstruktoid.hardening
+      vars:
+        block_blacklisted: true
+        suid_sgid_permissions: false
+        sshd_admin_net:
+          - 0.0.0.0/0

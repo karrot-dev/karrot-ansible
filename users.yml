@@ -1,0 +1,31 @@
+---
+- hosts: all
+  any_errors_fatal: true
+  become: true
+  tasks:
+    - lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: Add docker group
+      group:
+        name: docker
+
+    - name: Add users
+      user:
+        name: '{{ item }}'
+        groups:
+          - sudo
+          - docker
+        shell: /bin/bash
+      with_items:
+        - nick
+
+    - name: Set authorized keys
+      authorized_key:
+        user: nick
+        state: present
+        key: "{{ lookup('file', 'files/authorized_keys/nick.pub') }}"
