@@ -37,5 +37,14 @@
       # need this comment or the hardening one will remove it
       comment: ansible managed
 
+  - name: Allow SMTP
+    community.general.ufw:
+      rule: allow
+      direction: out
+      port: '587'
+      proto: tcp
+      # need this comment or the hardening one will remove it
+      comment: ansible managed
+
 # docker swarm init
 # and had to add "proxy" network, in swarm scope of type overlay
