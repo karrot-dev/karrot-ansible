@@ -3,6 +3,13 @@
   any_errors_fatal: true
   become: true
   tasks:
+  - name: Configure swap
+    # https://github.com/geerlingguy/ansible-role-swap
+    include_role:
+      name: geerlingguy.swap
+    vars:
+      swap_file_size_mb: 2048
+
   - name: Docker gpg key
     apt_key:
       url: https://download.docker.com/linux/debian/gpg

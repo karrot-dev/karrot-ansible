@@ -5,6 +5,12 @@ This configures the server with the basics of:
 2. security hardening (via https://github.com/konstruktoid/ansible-role-hardening)
 3. installing enough stuff for co-op cloud to work (https://docs.coopcloud.tech/)
 
+First, install galaxy deps:
+
+```
+ansible-galaxy install -r galaxy-requirements.yml
+```
+
 ## 1. User accounts
 
 ```
@@ -20,7 +26,6 @@ ansible-playbook users.yml
 Note: make sure you installed the users first, as after this you'll need to login as one of those, not root.
 
 ```
-ansible-galaxy install -r galaxy-requirements.yml
 ansible-playbook harden.yml
 ```
 
