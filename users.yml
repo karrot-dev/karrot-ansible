@@ -23,9 +23,16 @@
         shell: /bin/bash
       with_items:
         - nick
+        - peter
 
-    - name: Set authorized keys
+    - name: Set authorized key for nick
       authorized_key:
         user: nick
         state: present
         key: "{{ lookup('file', 'files/authorized_keys/nick.pub') }}"
+
+    - name: Set authorized key for peter
+      authorized_key:
+        user: peter
+        state: present
+        key: "{{ lookup('file', 'files/authorized_keys/peter.pub') }}"
