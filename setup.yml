@@ -10,6 +10,15 @@
     vars:
       swap_file_size_mb: 2048
 
+  - name: Configure unattended-upgrades
+    include_role:
+      name: weareinteractive.apt
+    vars:
+      apt_unattended_upgrades: yes
+      apt_unattended_upgrades_automatic_reboot: yes
+      apt_unattended_upgrades_automatic_reboot_time: 03:00
+      apt_autoremove: yes
+
   - name: Docker gpg key
     apt_key:
       url: https://download.docker.com/linux/debian/gpg
