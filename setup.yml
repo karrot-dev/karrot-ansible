@@ -18,6 +18,8 @@
       apt_unattended_upgrades_automatic_reboot: yes
       apt_unattended_upgrades_automatic_reboot_time: 03:00
       apt_autoremove: yes
+      apt_unattended_upgrades_allowed:
+      - ${distro_id}:${distro_codename}-security
 
   - name: Docker gpg key
     apt_key:
