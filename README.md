@@ -44,4 +44,7 @@ ansible-playbook harden.yml
 ansible-playbook setup.yml
 ```
 
-You're then ready to start using abra. See https://docs.coopcloud.tech/operators/tutorial/#server-setup
+You're then ready to start using abra with co-op cloud, some useful resources:
+- https://docs.coopcloud.tech/operators/tutorial/#server-setup
+- https://docs.karrot.world/self-hosting.html
+- https://git.coopcloud.tech/coop-cloud/karrot
