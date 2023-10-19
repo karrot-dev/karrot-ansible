@@ -1,13 +1,22 @@
-# bath.social server setup
+# karrot ansible server setup
 
 This configures the server with the basics of:
 1. user accounts and ssh keys
 2. security hardening (via https://github.com/konstruktoid/ansible-role-hardening)
 3. installing enough stuff for co-op cloud to work (https://docs.coopcloud.tech/)
 
-First, install galaxy deps:
+First, create a python virtualenv (recommended, but not essential):
 
 ```
+python -m venv .venv
+```
+
+(if you're using [rtx](https://github.com/jdx/rtx) it'll setup the venv for you automatically as we have a `.rtx.toml` config file)
+
+Then, install python deps and galaxy deps:
+
+```
+pip install -r requirements.txt
 ansible-galaxy install -r galaxy-requirements.yml
 ```
 
@@ -29,8 +38,10 @@ Note: make sure you installed the users first, as after this you'll need to logi
 ansible-playbook harden.yml
 ```
 
-## 3. rest of setup
+## 3. Rest of the setup
 
 ```
 ansible-playbook setup.yml
 ```
+
+You're then ready to start using abra. See https://docs.coopcloud.tech/operators/tutorial/#server-setup
