@@ -22,6 +22,8 @@ ansible-galaxy install -r galaxy-requirements.yml
 
 ## 1. User accounts
 
+You'll want to modify the `users.yml` and keys in `files/` to suit your own needs...
+
 ```
 # first time, before accounts created
 ansible-playbook users.yml -u root
