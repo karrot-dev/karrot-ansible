@@ -1,3 +1,8 @@
-- src: konstruktoid.hardening
-- src: geerlingguy.swap
-- src: weareinteractive.apt
+---
+roles:
+  - name: konstruktoid.hardening
+  - name: geerlingguy.swap
+  - name: weareinteractive.apt
+
+collections:
+  - name: community.docker

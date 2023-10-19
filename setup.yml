@@ -32,14 +32,31 @@
       repo: 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable'
       state: present
 
-  - name: Install docker
+  - name: Install dependencies
     package:
       name: '{{ item }}'
       state: present
     with_items:
+      - apparmor
       - docker-ce
       - docker-ce-cli
       - containerd.io
+      - python3-docker
+
+  - name: Ensure docker is running
+    ansible.builtin.service:
+      name: docker
+      enabled: true
+      state: started
+
+  - name: Initialize docker swarm
+    community.docker.docker_swarm:
+      state: present
+
+  - name: Create docker network
+    docker_network:
+      name: proxy
+      driver: overlay
 
   - name: Allow http(s)
     community.general.ufw:
