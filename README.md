@@ -9,6 +9,7 @@ First, create a python virtualenv (recommended, but not essential):
 
 ```
 python -m venv .venv
+source .venv/bin/activate
 ```
 
 (if you're using [rtx](https://github.com/jdx/rtx) it'll setup the venv for you automatically as we have a `.rtx.toml` config file)
