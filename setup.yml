@@ -34,7 +34,7 @@
 
   - name: Docker repo
     apt_repository:
-      repo: 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable'
+      repo: 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian {{ansible_distribution_release}} stable'
       state: present
 
   - name: Install dependencies
