@@ -21,6 +21,11 @@
       apt_unattended_upgrades_allowed:
       - ${distro_id}:${distro_codename}-security
 
+  - name: Install GnuPG
+    package:
+      name: 'gnupg'
+      state: present
+
   - name: Docker gpg key
     apt_key:
       url: https://download.docker.com/linux/debian/gpg
