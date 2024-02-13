@@ -19,6 +19,7 @@ Then, install python deps and galaxy deps:
 ```
 pip install -r requirements.txt
 ansible-galaxy install -r galaxy-requirements.yml
+ansible-galaxy collection install -r galaxy-requirements.yml
 ```
 
 ## 1. User accounts
