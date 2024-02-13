@@ -1,8 +1,12 @@
 ---
 roles:
   - name: konstruktoid.hardening
+    version: 'v1.15.0'
   - name: geerlingguy.swap
+    version: '1.0.2'
   - name: weareinteractive.apt
+    version: '2.12.0'
 
 collections:
   - name: community.docker
+    version: '3.4.11'
