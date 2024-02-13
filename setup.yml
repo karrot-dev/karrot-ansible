@@ -79,5 +79,31 @@
       # need this comment or the hardening one will remove it
       comment: ansible managed
 
-# docker swarm init
-# and had to add "proxy" network, in swarm scope of type overlay
+  # auditd writes LOADS into /var/log/syslog with the plugin
+  # enabled and fills up the disk
+  # the events are also written to /var/log/audit/ so it's OK
+  # TODO: also make it audit less stuff...
+  - name: Disable auditd syslog plugin
+    lineinfile:
+      path: /etc/audit/plugins.d/syslog.conf
+      state: present
+      regexp: '^active'
+      line: 'active = no'
+    notify:
+      - Restart auditd
+
+  # remove all the audit rules with "docker" in them
+  # they are removed in latest (unreleased) hardening role...
+  - name: Remove docker audit rules
+    lineinfile:
+      path: /etc/audit/rules.d/hardening.rules
+      state: absent
+      regexp: 'docker'
+    notify:
+      - Restart auditd
+
+  handlers:
+    - name: Restart auditd
+      ansible.builtin.service:
+        name: auditd
+        state: restarted
