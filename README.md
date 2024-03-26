@@ -12,7 +12,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-(if you're using [rtx](https://github.com/jdx/rtx) it'll setup the venv for you automatically as we have a `.rtx.toml` config file)
+(if you're using [mise](https://mise.jdx.dev/) it'll setup the venv for you automatically as we have a `.mise.toml` config file)
 
 Then, install python deps and galaxy deps:
 
@@ -50,5 +50,5 @@ ansible-playbook setup.yml
 
 You're then ready to start using abra with co-op cloud, some useful resources:
 - https://docs.coopcloud.tech/operators/tutorial/#server-setup
-- https://docs.karrot.world/self-hosting.html
+- https://docs.karrot.world/self-host/coop-cloud/getting-started
 - https://git.coopcloud.tech/coop-cloud/karrot
